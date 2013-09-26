@@ -9,21 +9,63 @@
 #import "MMViewController.h"
 
 @interface MMViewController ()
+@property (strong, nonatomic) NSTimer *stopWatchTimer;
+@property (strong, nonatomic) NSDate *startDate;
 
 @end
 
 @implementation MMViewController
 
+@synthesize startTimer;
+@synthesize stopTimer;
+@synthesize pauseTimer;
+@synthesize textFieldToDisplayClock;
+@synthesize clockDisplay;
+
+
+- (void)updateClockDisplay {
+    NSLog(@"hope this works");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+- (void)updateTimer
+    {
+        static NSInteger counter = 0;
+        self.textFieldToDisplayClock.text = [NSString stringWithFormat:@"Counter: %i", counter++];
+    }
+    
+    - (IBAction) startTimer:(id)sender {
+        self.startDate = [NSDate date];
+        
+        // Create the stop watch timer that fires every 100 ms
+        self.stopWatchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                               target:self
+                                                             selector:@selector(updateTimer)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
+
+    
+
+
+
+- (IBAction)startTimerButton:(id)sender {
+    //when user taps this button, time begins counting upward in text field
+
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)stopTimerButton:(id)sender {
+    //When user taps this button,
+    
 }
+
+- (IBAction)pauseTimerButton:(id)sender {
+//When user taps this button, time in text field stops and remains same, and user can start time again
+}
+
 
 @end

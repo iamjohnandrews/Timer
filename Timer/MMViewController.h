@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface MMViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *startTimer;
+@property (weak, nonatomic) IBOutlet UIButton *stopTimer;
+@property (weak, nonatomic) IBOutlet UIButton *pauseTimer;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldToDisplayClock;
+
+@property  NSTimer *clockDisplay;
+
+- (IBAction)startTimerButton:(id)sender;
+- (IBAction)stopTimerButton:(id)sender;
+- (IBAction)pauseTimerButton:(id)sender;
+-(void)updateClockDisplay;
 
 @end
